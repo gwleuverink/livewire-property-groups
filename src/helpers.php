@@ -15,6 +15,7 @@ function group(Component $component, string|array $groups)
 
     foreach ($groups as $group) {
         foreach ($componentProperties as $property) {
+            $property->setAccessible(true); // Allows grabbing protected props in php < 8.1
             $attributes = $property->getAttributes(Group::class);
 
             foreach ($attributes as $attribute) {
