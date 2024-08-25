@@ -1,2 +1,3 @@
 providers:
   - Leuverink\PropertyAttribute\ServiceProvider
+  - Livewire\LivewireServiceProvider

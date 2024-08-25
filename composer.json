@@ -17,7 +17,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "livewire/livewire": "^3"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
@@ -41,9 +42,19 @@
         "fix": "vendor/bin/duster fix",
         "analyze": "vendor/bin/phpstan analyse",
         "baseline": "vendor/bin/phpstan analyse --generate-baseline",
-
         "test": "@php vendor/bin/pest --bail",
-        "build": "bash build.sh"
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ]
     },
     "config": {
         "allow-plugins": {

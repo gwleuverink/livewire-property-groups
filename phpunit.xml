@@ -16,6 +16,6 @@
         </include>
     </source>
     <php>
-        <env name="MAGIC_TODO_ENABLED" value="true"/>
+        <env name="APP_KEY" value="base64:SitZtCpNstw+cgvASO2DPnLQveqXY9JDtCv3AZoEOAA="/>
     </php>
 </phpunit>
