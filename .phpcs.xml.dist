@@ -3,7 +3,7 @@
     <description>Gedachtegoed PHP CS rules for PHP packages</description>
 
     <file>src</file>
-    <file>config</file>
+    <!-- <file>config</file> -->
     <file>tests</file>
 
     <description>Gedachtegoed PHP CS rules for PHP packages</description>

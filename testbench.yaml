@@ -1,3 +1,2 @@
 providers:
-  - Leuverink\MagicTodo\ServiceProvider
-  - Leuverink\AssetInjector\ServiceProvider
+  - Leuverink\PropertyAttribute\ServiceProvider
