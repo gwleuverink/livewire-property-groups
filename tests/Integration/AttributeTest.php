@@ -29,7 +29,7 @@ it('groups properties', function () {
         ]);
 });
 
-test('supports shared groups', function () {
+it('supports shared groups', function () {
     Livewire::test(new class extends TestComponent
     {
         #[Group('a')]
@@ -51,7 +51,30 @@ test('supports shared groups', function () {
     })
         ->call('getGroupB')
         ->assertSet('result', [
-            'bar' => 1,
-            'baz' => 2,
+            'bar' => 2,
+            'baz' => 3,
+        ]);
+});
+
+it('can retreive multiple groups at once', function () {
+    Livewire::test(new class extends TestComponent
+    {
+        #[Group('a')]
+        public $foo = 1;
+
+        #[Group('b')]
+        public $bar = 2;
+
+        public ?array $result = [];
+
+        public function getGroupB()
+        {
+            $this->result = $this->group(['a', 'b']);
+        }
+    })
+        ->call('getGroupB')
+        ->assertSet('result', [
+            'foo' => 1,
+            'bar' => 2,
         ]);
 });
