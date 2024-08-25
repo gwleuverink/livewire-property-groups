@@ -15,7 +15,7 @@ it('groups properties', function () {
         #[Group('b')]
         public $baz = 3;
 
-        public array $result = [];
+        public ?array $result = [];
 
         public function getGroupA()
         {
@@ -42,14 +42,14 @@ test('supports shared groups', function () {
         #[Group('b')]
         public $baz = 3;
 
-        public array $result = [];
+        public ?array $result = [];
 
-        public function getGroupA()
+        public function getGroupB()
         {
-            $this->result = $this->group('a');
+            $this->result = $this->group('b');
         }
     })
-        ->call('getGroupA')
+        ->call('getGroupB')
         ->assertSet('result', [
             'bar' => 1,
             'baz' => 2,
