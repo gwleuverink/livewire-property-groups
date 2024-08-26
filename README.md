@@ -13,7 +13,43 @@ composer require leuverink/livewire-property-group
 
 ## Usage
 
-TODO
+```php
+class Form extends Component
+    {
+    #[Group('a')]
+    public $foo = 1;
+    #[Group('a')]
+    public $bar = 2;
+
+    #[Group('b')]
+    public $baz = 3;
+
+
+    public function submit()
+    {
+        $groupA = $this->group('a'); // ['foo' => 1, 'bar' => 2]
+        $groupB = $this->group('b'); // ['baz' => 3]
+    }
+}
+```
+
+```php
+// Behaves like a Collection
+$this->group('a'); // returns all properties ['foo' => 1, 'bar' => 2]
+$this->group('a')->keys(); // returns all property names ['foo', 'bar']
+$this->group('a')->values(); // returns all property values [1, 2]
+$this->group('a')->each(fn() => /* */); // iterate over properties
+
+// Proxies Livewire calls
+$this->group('a')->reset(); // resets properties to initial state
+$this->group('a')->pull(); // returns all properties & resets properties to initial state
+$this->group('a')->validate(); // validates all properties in a group
+
+// Extra
+$this->group(['a', 'b']); // all operations can be applied to any number of groups
+$this->group(['a', 'b'])->validate(); // especially handy when validating
+
+```
 
 ## Development
 
