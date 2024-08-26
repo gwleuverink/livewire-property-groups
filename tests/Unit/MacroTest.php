@@ -94,8 +94,3 @@ it('can transform PropertyCollection to a array', function () {
 
     expect($result)->toBeArray();
 });
-
-// Should be Integration tests? Component not mounted on unit level. Can't reset properties this way
-it('resets all properties in a group when the `reset` method was chained')->todo(); // add two groups for unhappy path
-it('returns & resets all properties in a group when the `pull` method was chained')->todo(); // add two groups for unhappy path
-it('validates all properties in a group when the `validate` method was chained')->todo(); // add two groups for unhappy path

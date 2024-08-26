@@ -78,3 +78,56 @@ it('can retrieve multiple groups at once', function () {
             'bar' => 2,
         ]);
 });
+
+it('resets all properties in a group when the `reset` method was chained', function () {
+    Livewire::test(new class extends TestComponent
+    {
+        #[Group('a')]
+        public $foo = 1;
+
+        #[Group('b')]
+        public $bar = 2;
+
+        public ?array $result = [];
+
+        public function resetGroupA()
+        {
+            $this->group('a')->reset();
+        }
+    })
+        ->set([
+            'foo' => 'faa',
+            'bar' => 'baa',
+        ])
+        ->call('resetGroupA')
+        ->assertSet('foo', 1)
+        ->assertSet('bar', 'baa');
+});
+
+it('returns & resets all properties in a group when the `pull` method was chained', function () {
+    Livewire::test(new class extends TestComponent
+    {
+        #[Group('a')]
+        public $foo = 1;
+
+        #[Group('b')]
+        public $bar = 2;
+
+        public ?array $result = [];
+
+        public function pullGroupA()
+        {
+            $this->result = $this->group('a')->pull();
+        }
+    })
+        ->set([
+            'foo' => 'faa',
+            'bar' => 'baa',
+        ])
+        ->call('pullGroupA')
+        ->assertSet('foo', 1)
+        ->assertSet('bar', 'baa')
+        ->assertSet('result', ['foo' => 'faa']);
+});
+
+it('validates all properties in a group when the `validate` method was chained')->todo(); // add two groups for unhappy path

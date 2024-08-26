@@ -53,6 +53,25 @@ class PropertyCollection implements ArrayAccess, IteratorAggregate
 
     /*
     |--------------------------------------------------------------------------
+    | Livewire Proxy methods
+    |--------------------------------------------------------------------------
+    */
+    public function reset()
+    {
+        return $this->component->reset(
+            $this->keys()
+        );
+    }
+
+    public function pull()
+    {
+        return $this->component->pull(
+            $this->keys()
+        );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | ArrayAccess/Iterator methods
     |--------------------------------------------------------------------------
     */
