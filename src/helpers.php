@@ -5,7 +5,7 @@ namespace Leuverink\PropertyAttribute;
 use ReflectionClass;
 use Livewire\Component;
 
-function group(Component $component, string|array $groups)
+function group(Component $component, string|array $groups): PropertyCollection
 {
     $groups = (array) $groups;
 
@@ -27,5 +27,5 @@ function group(Component $component, string|array $groups)
         }
     }
 
-    return $result;
+    return new PropertyCollection($component, $result);
 }

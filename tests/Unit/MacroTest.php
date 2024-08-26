@@ -55,7 +55,9 @@ it('can iterate over properties in a group when the `each` method was chained', 
 
     $iterations = 0;
 
-    group($component, 'a')->each(fn () => $iterations++);
+    group($component, 'a')->each(function () use (&$iterations) {
+        $iterations++;
+    });
 
     expect($iterations)->toBe(2);
 });
@@ -70,10 +72,12 @@ it('can chain on the `each` method', function () {
         public $bar = 2;
     };
 
-    expect(group($component, 'a'))
+    $result = group($component, 'a')
         ->each(function () {
             // Don't have to do anything here
-        })
+        });
+
+    expect($result)
         ->values()
         ->toBeArray()
         ->toContain(1, 2);

@@ -19,7 +19,7 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function registerGroupMacro()
     {
-        Component::macro('group', function (string|array $groups) {
+        Component::macro('group', function (string|array $groups): PropertyCollection {
             /** @var Component $this */
             return group($this, $groups);
         });
