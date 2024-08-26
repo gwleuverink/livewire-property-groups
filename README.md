@@ -64,7 +64,7 @@ $this->group('a')->validate();
 ### Working with Multiple Groups
 
 ```php
-// retrieve properties from multiple groups
+// Retrieve properties from multiple groups
 $this->group(['a', 'b']);
 
 // Validate multiple groups
@@ -74,21 +74,17 @@ $this->group(['a', 'b'])->validate();
 ### Debugging
 
 ```php
-// Dump group properties
+// dump group properties
 $this->group('a')->dump();
 
 // dd group properties
 $this->group('a')->dd();
 
-// Dump is chainable
+// dump is chainable
 $validated = $this->group('a')
     ->dump()
     ->validate();
 ```
-
-<br />
-<hr />
-<br />
 
 ## Development
 
