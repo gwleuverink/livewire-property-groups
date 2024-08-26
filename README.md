@@ -11,11 +11,11 @@ TODO: Short description
 composer require leuverink/livewire-property-group
 ```
 
-## Usage
+## Basic Usage
 
 ```php
 class Form extends Component
-    {
+{
     #[Group('a')]
     public $foo = 1;
     #[Group('a')]
@@ -23,7 +23,6 @@ class Form extends Component
 
     #[Group('b')]
     public $baz = 3;
-
 
     public function submit()
     {
@@ -33,25 +32,63 @@ class Form extends Component
 }
 ```
 
+## Accessing Group Properties
+
 ```php
-// Behaves like a Collection
-$this->group('a'); // returns all properties ['foo' => 1, 'bar' => 2]
-$this->group('a')->keys(); // returns all property names ['foo', 'bar']
-$this->group('a')->values(); // returns all property values [1, 2]
-$this->group('a')->each(fn() => /* */); // iterate over properties
+// Get all properties in a group
+$this->group('a'); // returns ['foo' => 1, 'bar' => 2]
 
-// Proxies Livewire calls
-$this->group('a')->reset(); // resets properties to initial state
-$this->group('a')->pull(); // returns all properties & resets properties to initial state
-$this->group('a')->validate(); // validates all properties in a group
+// Get property names
+$this->group('a')->keys(); // returns ['foo', 'bar']
 
-// Extra
-$this->group(['a', 'b']); // operations can be applied to any number of groups
-$this->group(['a', 'b'])->validate(); // especially handy when validating
+// Get property values
+$this->group('a')->values(); // returns [1, 2]
 
-$this->group('a')->dump();
-$this->group('a')->dd();
+// Iterate over properties
+$this->group('a')->each(fn() => /* */);
 ```
+
+## Proxying Livewire methods
+
+```php
+// Reset properties to initial state
+$this->group('a')->reset();
+
+// Return all properties and reset to initial state
+$this->group('a')->pull();
+
+// Validate all properties in a group
+$this->group('a')->validate();
+```
+
+## Working with Multiple Groups
+
+```php
+// Perform operations on multiple groups
+$this->group(['a', 'b']);
+
+// Validate multiple groups
+$this->group(['a', 'b'])->validate();
+```
+
+## Debugging
+
+```php
+// Dump group properties
+$this->group('a')->dump();
+
+// dd group properties
+$this->group('a')->dd();
+
+// Dump is chainable
+$validated = $this->group('a')
+    ->dump()
+    ->validate();
+```
+
+<br />
+<hr />
+<br />
 
 ## Development
 
