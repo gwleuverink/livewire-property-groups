@@ -3,7 +3,7 @@
 [![codestyle](https://github.com/gwleuverink/livewire-property-group/actions/workflows/codestyle.yml/badge.svg)](https://github.com/gwleuverink/livewire-property-group/actions/workflows/codestyle.yml)
 [![tests](https://github.com/gwleuverink/livewire-property-group/actions/workflows/tests.yml/badge.svg)](https://github.com/gwleuverink/livewire-property-group/actions/workflows/tests.yml)
 
-TODO: Short description
+This package simplifies property management, validation, and manipulation in Livewire components by allowing you to organize related properties into named groups.
 
 ## Installation
 
