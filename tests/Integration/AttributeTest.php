@@ -2,6 +2,7 @@
 
 use Livewire\Livewire;
 use Tests\TestComponent;
+use Livewire\Attributes\Validate;
 use Leuverink\PropertyAttribute\Group;
 
 it('groups properties', function () {
@@ -130,4 +131,54 @@ it('returns & resets all properties in a group when the `pull` method was chaine
         ->assertSet('result', ['foo' => 'faa']);
 });
 
-it('validates all properties in a group when the `validate` method was chained')->todo(); // add two groups for unhappy path
+it('validates all properties in a group when the `validate` method was chained', function () {
+    Livewire::test(new class extends TestComponent
+    {
+        #[Group('a')]
+        #[Validate('integer')]
+        public $foo = 1;
+
+        #[Group('b')]
+        #[Validate('integer')]
+        public $bar = 2;
+
+        public function validateGroupA()
+        {
+            $this->group('a')->validate();
+        }
+    })
+        ->set([
+            'foo' => 'faa', // should fail
+            'bar' => 'baa', // should fail, but not validate
+        ])
+        ->call('validateGroupA')
+        ->assertHasErrors('foo')
+        ->assertHasNoErrors('bar');
+});
+
+it('returns all validated properties in a group when the `validate` method was chained', function () {
+    Livewire::test(new class extends TestComponent
+    {
+        #[Group('a')]
+        #[Validate('string')]
+        public $foo = 1;
+
+        #[Group('b')]
+        #[Validate('integer')]
+        public $bar = 2;
+
+        public ?array $result = [];
+
+        public function validateGroupA()
+        {
+            $this->result = $this->group('a')->validate();
+        }
+    })
+        ->set([
+            'foo' => 'faa', // should fail
+            'bar' => 'baa', // should fail, but not validate
+        ])
+        ->call('validateGroupA')
+        ->assertHasNoErrors('bar')
+        ->assertSet('result', ['foo' => 'faa']);
+});

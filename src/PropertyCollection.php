@@ -70,6 +70,16 @@ class PropertyCollection implements ArrayAccess, IteratorAggregate
         );
     }
 
+    public function validate()
+    {
+        $properties = $this->keys();
+        $rules = collect($this->component->getRules())->filter(
+            fn ($rule, $key) => in_array($key, $properties)
+        )->toArray();
+
+        return $this->component->validate($rules);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | ArrayAccess/Iterator methods
