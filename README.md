@@ -32,7 +32,7 @@ class Form extends Component
 }
 ```
 
-## Accessing Group Properties
+### Accessing Group Properties
 
 ```php
 // Get all properties in a group
@@ -48,7 +48,7 @@ $this->group('a')->values(); // [1, 2]
 $this->group('a')->each(fn() => /* */);
 ```
 
-## Proxying Livewire Methods
+### Proxying Livewire Methods
 
 ```php
 // Reset properties to initial state
@@ -61,17 +61,17 @@ $this->group('a')->pull();
 $this->group('a')->validate();
 ```
 
-## Working with Multiple Groups
+### Working with Multiple Groups
 
 ```php
-// Perform operations on multiple groups
+// retrieve properties from multiple groups
 $this->group(['a', 'b']);
 
 // Validate multiple groups
 $this->group(['a', 'b'])->validate();
 ```
 
-## Debugging
+### Debugging
 
 ```php
 // Dump group properties
