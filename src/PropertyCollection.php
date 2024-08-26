@@ -7,9 +7,12 @@ use ArrayAccess;
 use ArrayIterator;
 use IteratorAggregate;
 use Livewire\Component;
+use Illuminate\Support\Traits\Dumpable;
 
 class PropertyCollection implements ArrayAccess, IteratorAggregate
 {
+    use Dumpable;
+
     final public function __construct(
         private readonly Component $component,
         private array $items = []
@@ -77,6 +80,23 @@ class PropertyCollection implements ArrayAccess, IteratorAggregate
         )->toArray();
 
         return $this->component->validate($rules);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | dump & dd
+    |--------------------------------------------------------------------------
+    */
+    public function dump(): self
+    {
+        dump($this->items);
+
+        return $this;
+    }
+
+    public function dd(): never
+    {
+        dd($this->items);
     }
 
     /*

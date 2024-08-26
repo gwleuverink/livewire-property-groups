@@ -2,6 +2,7 @@
 
 use Tests\TestComponent;
 use Leuverink\PropertyAttribute\Group;
+use Leuverink\PropertyAttribute\PropertyCollection;
 
 use function Leuverink\PropertyAttribute\group;
 
@@ -94,3 +95,8 @@ it('can transform PropertyCollection to a array', function () {
 
     expect($result)->toBeArray();
 });
+
+arch('it is dumpable')
+    ->expect(PropertyCollection::class)
+    ->toHaveMethod('dump')
+    ->toHaveMethod('dd');

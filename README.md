@@ -49,6 +49,8 @@ $this->group('a')->validate(); // validates all properties in a group
 $this->group(['a', 'b']); // operations can be applied to any number of groups
 $this->group(['a', 'b'])->validate(); // especially handy when validating
 
+$this->group('a')->dump();
+$this->group('a')->dd();
 ```
 
 ## Development
