@@ -57,7 +57,7 @@ it('supports shared groups', function () {
         ]);
 });
 
-it('can retrieve multiple groups at once', function () {
+it('retrieves multiple groups at once', function () {
     Livewire::test(new class extends TestComponent
     {
         #[Group('a')]
@@ -80,7 +80,7 @@ it('can retrieve multiple groups at once', function () {
         ]);
 });
 
-it('resets all properties in a group when the `reset` method was chained', function () {
+it('supports livewire reset forwarding', function () {
     Livewire::test(new class extends TestComponent
     {
         #[Group('a')]
@@ -105,7 +105,7 @@ it('resets all properties in a group when the `reset` method was chained', funct
         ->assertSet('bar', 'baa');
 });
 
-it('returns & resets all properties in a group when the `pull` method was chained', function () {
+it('supports livewire pull forwarding', function () {
     Livewire::test(new class extends TestComponent
     {
         #[Group('a')]
@@ -131,7 +131,7 @@ it('returns & resets all properties in a group when the `pull` method was chaine
         ->assertSet('result', ['foo' => 'faa']);
 });
 
-it('validates all properties in a group when the `validate` method was chained', function () {
+it('supports livewire validate forwarding', function () {
     Livewire::test(new class extends TestComponent
     {
         #[Group('a')]
@@ -156,7 +156,7 @@ it('validates all properties in a group when the `validate` method was chained',
         ->assertHasNoErrors('bar');
 });
 
-it('returns all validated properties in a group when the `validate` method was chained', function () {
+it('returns only validated properties in a group', function () {
     Livewire::test(new class extends TestComponent
     {
         #[Group('a')]

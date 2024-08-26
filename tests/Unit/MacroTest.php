@@ -6,7 +6,7 @@ use Leuverink\PropertyAttribute\PropertyCollection;
 
 use function Leuverink\PropertyAttribute\group;
 
-it('returns multidimensional array if no methods where chained', function () {
+it('returns PropertyCollection', function () {
     $component = new class extends TestComponent
     {
         #[Group('a')]
@@ -14,6 +14,20 @@ it('returns multidimensional array if no methods where chained', function () {
     };
 
     expect(group($component, 'a'))
+        ->toBeInstanceOf(PropertyCollection::class)
+        ->toHaveKey('foo')
+        ->toContain(1);
+});
+
+it('ensures PropertyCollection is Iterable & ArrayAccessable', function () {
+    $component = new class extends TestComponent
+    {
+        #[Group('a')]
+        public $foo = 1;
+    };
+
+    expect(group($component, 'a'))
+        ->toBeIterable()
         ->toHaveKey('foo')
         ->toContain(1);
 });
@@ -94,6 +108,14 @@ it('can transform PropertyCollection to a array', function () {
     $result = group($component, 'a')->toArray();
 
     expect($result)->toBeArray();
+});
+
+it('wont crash when Attribute is not applied in component', function () {
+    $component = new class extends TestComponent {};
+
+    $result = group($component, 'a')->toArray();
+
+    expect($result)->toBeEmpty();
 });
 
 arch('it is dumpable')
