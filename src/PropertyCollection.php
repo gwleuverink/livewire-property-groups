@@ -87,6 +87,7 @@ class PropertyCollection implements ArrayAccess, IteratorAggregate
     | dump & dd
     |--------------------------------------------------------------------------
     */
+    /** @codeCoverageIgnore */
     public function dump(): self
     {
         dump($this->items);
@@ -94,6 +95,7 @@ class PropertyCollection implements ArrayAccess, IteratorAggregate
         return $this;
     }
 
+    /** @codeCoverageIgnore */
     public function dd(): never
     {
         dd($this->items);
@@ -104,16 +106,19 @@ class PropertyCollection implements ArrayAccess, IteratorAggregate
     | ArrayAccess/Iterator methods
     |--------------------------------------------------------------------------
     */
+    /** @codeCoverageIgnore */
     public function offsetExists($offset): bool
     {
         return isset($this->items[$offset]);
     }
 
+    /** @codeCoverageIgnore */
     public function offsetGet($offset): mixed
     {
         return $this->items[$offset];
     }
 
+    /** @codeCoverageIgnore */
     public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
@@ -125,6 +130,7 @@ class PropertyCollection implements ArrayAccess, IteratorAggregate
         $this->items[$offset] = $value;
     }
 
+    /** @codeCoverageIgnore */
     public function offsetUnset($offset): void
     {
         unset($this->items[$offset]);

@@ -27,5 +27,5 @@ function group(Component $component, string|array $groups): PropertyCollection
         }
     }
 
-    return new PropertyCollection($component, $result);
+    return PropertyCollection::make($component, $result);
 }
