@@ -48,7 +48,7 @@ $this->group('a')->values(); // [1, 2]
 $this->group('a')->each(fn() => /* */);
 ```
 
-## Proxying Livewire methods
+## Proxying Livewire Methods
 
 ```php
 // Reset properties to initial state
