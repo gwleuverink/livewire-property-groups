@@ -36,13 +36,13 @@ class Form extends Component
 
 ```php
 // Get all properties in a group
-$this->group('a'); // returns ['foo' => 1, 'bar' => 2]
+$this->group('a'); // ['foo' => 1, 'bar' => 2]
 
 // Get property names
-$this->group('a')->keys(); // returns ['foo', 'bar']
+$this->group('a')->keys(); // ['foo', 'bar']
 
 // Get property values
-$this->group('a')->values(); // returns [1, 2]
+$this->group('a')->values(); // [1, 2]
 
 // Iterate over properties
 $this->group('a')->each(fn() => /* */);
