@@ -19,7 +19,7 @@ it('groups properties', function () {
 
         public function getGroupA()
         {
-            $this->result = $this->group('a');
+            $this->result = $this->group('a')->toArray();
         }
     })
         ->call('getGroupA')
@@ -46,7 +46,7 @@ it('supports shared groups', function () {
 
         public function getGroupB()
         {
-            $this->result = $this->group('b');
+            $this->result = $this->group('b')->toArray();
         }
     })
         ->call('getGroupB')
@@ -56,7 +56,7 @@ it('supports shared groups', function () {
         ]);
 });
 
-it('can retreive multiple groups at once', function () {
+it('can retrieve multiple groups at once', function () {
     Livewire::test(new class extends TestComponent
     {
         #[Group('a')]
@@ -69,7 +69,7 @@ it('can retreive multiple groups at once', function () {
 
         public function getGroupB()
         {
-            $this->result = $this->group(['a', 'b']);
+            $this->result = $this->group(['a', 'b'])->toArray();
         }
     })
         ->call('getGroupB')
