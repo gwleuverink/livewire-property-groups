@@ -10,13 +10,13 @@ function group(Component $component, string|array|null $groups = null): Property
     $groups = (array) $groups;
 
     $result = empty($groups)
-        ? all_grouped_properties($component)
-        : all_named_grouped_properties($component, $groups);
+        ? all_groups($component)
+        : named_groups($component, $groups);
 
     return PropertyCollection::make($component, $result);
 }
 
-function all_grouped_properties(Component $component): array
+function all_groups(Component $component): array
 {
     $result = [];
     $reflection = new ReflectionClass($component);
@@ -32,7 +32,7 @@ function all_grouped_properties(Component $component): array
     return $result;
 }
 
-function all_named_grouped_properties(Component $component, array $groups): array
+function named_groups(Component $component, array $groups): array
 {
     $result = [];
     $reflection = new ReflectionClass($component);
