@@ -5,6 +5,7 @@ namespace Leuverink\PropertyAttribute;
 use Iterator;
 use ArrayAccess;
 use ArrayIterator;
+use Livewire\Form;
 use IteratorAggregate;
 use Livewire\Component;
 use Illuminate\Support\Traits\Dumpable;
@@ -14,11 +15,11 @@ class PropertyCollection implements ArrayAccess, IteratorAggregate
     use Dumpable;
 
     final public function __construct(
-        private readonly Component $component,
+        private readonly Component|Form $component,
         private array $items = []
     ) {}
 
-    public static function make(Component $component, $items = [])
+    public static function make(Component|Form $component, $items = [])
     {
         return new static($component, (array) $items);
     }

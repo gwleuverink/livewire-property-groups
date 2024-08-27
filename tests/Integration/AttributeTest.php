@@ -1,10 +1,16 @@
 <?php
 
+use Tests\TestForm;
 use Livewire\Livewire;
 use Tests\TestComponent;
 use Livewire\Attributes\Validate;
 use Leuverink\PropertyAttribute\Group;
 
+/*
+|--------------------------------------------------------------------------
+| Interacting with groups
+|--------------------------------------------------------------------------
+*/
 it('groups properties', function () {
     Livewire::test(new class extends TestComponent
     {
@@ -105,6 +111,11 @@ it('retrieves all groups when no group name was given', function () {
         ]);
 });
 
+/*
+|--------------------------------------------------------------------------
+| Livewire forwarding
+|--------------------------------------------------------------------------
+*/
 it('supports livewire reset forwarding', function () {
     Livewire::test(new class extends TestComponent
     {
@@ -206,4 +217,42 @@ it('returns only validated properties in a group', function () {
         ->call('validateGroupA')
         ->assertHasNoErrors('bar')
         ->assertSet('result', ['foo' => 'faa']);
+});
+
+/*
+|--------------------------------------------------------------------------
+| Form objects
+|--------------------------------------------------------------------------
+*/
+it('supports livewire form objects', function () {
+    Livewire::test(new class extends TestComponent
+    {
+        public TestForm $form;
+
+        public ?array $result = [];
+
+        public function getGroupFromFormObject()
+        {
+            $this->result = $this->form->group('a')->toArray();
+        }
+    })
+        ->call('getGroupFromFormObject')
+        ->assertSet('result', [
+            'foo' => 1,
+        ]);
+});
+
+it('validates livewire form objects', function () {
+    Livewire::test(new class extends TestComponent
+    {
+        public TestForm $form;
+
+        public function validateFormGroupA()
+        {
+            $this->form->group('a')->validate();
+        }
+    })
+        ->call('validateFormGroupA')
+        ->assertHasErrors('form.foo')
+        ->assertHasNoErrors('form.bar');
 });
