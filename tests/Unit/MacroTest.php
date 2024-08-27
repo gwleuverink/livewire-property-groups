@@ -2,6 +2,7 @@
 
 use Tests\TestComponent;
 use Leuverink\PropertyAttribute\Group;
+use Leuverink\PropertyAttribute\ServiceProvider;
 use Leuverink\PropertyAttribute\PropertyCollection;
 
 use function Leuverink\PropertyAttribute\group;
@@ -122,3 +123,18 @@ arch('it is dumpable')
     ->expect(PropertyCollection::class)
     ->toHaveMethod('dump')
     ->toHaveMethod('dd');
+
+it('can register the `group` macro under a different name', function () {
+
+    $this->app->config->set([
+        'property-group.macro' => 'fooBarBaz',
+    ]);
+
+    // Hacky way to reregister the macro (Provider already booted before updating config)
+    (new ServiceProvider($this->app))->boot();
+
+    $component = new class extends TestComponent {};
+
+    $component->fooBarBaz('a'); // Will throw method not found exception if not rebound
+    expect(true)->toBe(true);
+});
