@@ -46,6 +46,9 @@ $this->group('a')->values(); // [1, 2]
 
 // Iterate over properties
 $this->group('a')->each(fn() => /* */);
+
+// Get all grouped properties, excluding non grouped
+$this->group();
 ```
 
 ### Proxying Livewire Methods

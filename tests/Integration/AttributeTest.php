@@ -80,6 +80,31 @@ it('retrieves multiple groups at once', function () {
         ]);
 });
 
+it('retrieves all groups when no group name was given', function () {
+    Livewire::test(new class extends TestComponent
+    {
+        #[Group('a')]
+        public $foo = 1;
+
+        #[Group('b')]
+        public $bar = 2;
+
+        public $baz = 3;
+
+        public ?array $result = [];
+
+        public function getAllGroups()
+        {
+            $this->result = $this->group()->toArray();
+        }
+    })
+        ->call('getAllGroups')
+        ->assertSet('result', [
+            'foo' => 1,
+            'bar' => 2,
+        ]);
+});
+
 it('supports livewire reset forwarding', function () {
     Livewire::test(new class extends TestComponent
     {
