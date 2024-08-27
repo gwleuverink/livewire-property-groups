@@ -33,6 +33,18 @@ it('ensures PropertyCollection is Iterable & ArrayAccessable', function () {
         ->toContain(1);
 });
 
+it('can access property collection like a object', function () {
+    $component = new class extends TestComponent
+    {
+        #[Group('a')]
+        public $foo = 1;
+    };
+
+    expect(group($component, 'a'))
+        ->foo->toBe(1)
+        ->bar->toBe(null);
+});
+
 it('returns array keys when `keys` method was chained', function () {
     $component = new class extends TestComponent
     {

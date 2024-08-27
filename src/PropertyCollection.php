@@ -23,6 +23,11 @@ class PropertyCollection implements ArrayAccess, IteratorAggregate
         return new static($component, (array) $items);
     }
 
+    public function __get($key)
+    {
+        return $this->items[$key] ?? null;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Collection methods
