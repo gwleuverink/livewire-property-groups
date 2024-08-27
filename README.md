@@ -101,7 +101,15 @@ $validated = $this->group('a')
 I realize that `group` is a very generic method name that you might well use inside your own components.
 You may change the macro's signature by publishing & updating the package config.
 
-For example, if you change `property-group.macro` from `group` to `fooBarBaz` you can retrieve property groups by calling `$this->fooBarBaz('group-name')` in your component;
+For example, if you change `property-group.macro` from `group` to `fooBarBaz` you can retrieve property groups by calling `$this->fooBarBaz('group-name')` in your component.
+
+You may also import and use the function directly;
+
+```php
+use function Leuverink\PropertyAttribute\group;
+
+$properties = group(component: $this, groups: 'group-name');
+```
 
 ## Development
 
