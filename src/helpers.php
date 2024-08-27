@@ -42,5 +42,3 @@ function group(Component $component, string|array|null $groups = null): Property
 
     return PropertyCollection::make($component, $result);
 }
-
-function getGroupedProperties(): array {}
