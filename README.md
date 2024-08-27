@@ -14,6 +14,8 @@ composer require leuverink/livewire-property-group
 ## Basic Usage
 
 ```php
+use Leuverink\PropertyAttribute\Group;
+
 class Form extends Component
 {
     #[Group('a')]
