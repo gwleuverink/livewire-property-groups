@@ -89,6 +89,13 @@ $validated = $this->group('a')
     ->validate();
 ```
 
+### Conflicting `group` method signature
+
+I realize that `group` is a very generic method name that you might well use inside your own components.
+You may change the macro's signature by publishing & updating the package config.
+
+For example, if you change `property-group.macro` from `group` to `fooBarBaz` you can retrieve property groups by calling `$this->fooBarBaz('group-name')` in your component;
+
 ## Development
 
 ```bash
