@@ -23,6 +23,7 @@ class Form extends Component
 
     #[Group('a')]
     public $foo = 1;
+
     #[Group('a')]
     public $bar = 2;
 
