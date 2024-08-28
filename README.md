@@ -15,9 +15,12 @@ composer require leuverink/livewire-property-group
 
 ```php
 use Leuverink\PropertyAttribute\Group;
+use Leuverink\PropertyAttribute\WithGroups;
 
 class Form extends Component
 {
+    use WithGroups;
+
     #[Group('a')]
     public $foo = 1;
     #[Group('a')]
@@ -35,6 +38,8 @@ class Form extends Component
 ```
 
 ### Accessing Group Properties
+
+Use the `WithGroups` trait within your Component or Form object to get access to the `group` method.
 
 ```php
 // Get all properties in a group
@@ -99,16 +104,12 @@ $validated = $this->group('a')
 ### Conflicting `group` method signature
 
 I realize that `group` is a very generic method name that you might well use inside your own components.
-You may change the macro's signature by publishing & updating the package config.
-
-For example, if you change `property-group.macro` from `group` to `fooBarBaz` you can retrieve property groups by calling `$this->fooBarBaz('group-name')` in your component.
-
-You may also import and use the function directly;
+You may change the macro's signature by providing an alias.
 
 ```php
-use function Leuverink\PropertyAttribute\group;
-
-$properties = group(component: $this, groups: 'group-name');
+use WithGroups {
+    group as fooBar;
+}
 ```
 
 ## Development
