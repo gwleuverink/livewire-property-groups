@@ -1,14 +1,14 @@
 # Livewire Property Groups
 
-[![codestyle](https://github.com/gwleuverink/livewire-property-group/actions/workflows/codestyle.yml/badge.svg)](https://github.com/gwleuverink/livewire-property-group/actions/workflows/codestyle.yml)
-[![tests](https://github.com/gwleuverink/livewire-property-group/actions/workflows/tests.yml/badge.svg)](https://github.com/gwleuverink/livewire-property-group/actions/workflows/tests.yml)
+[![codestyle](https://github.com/gwleuverink/livewire-property-groups/actions/workflows/codestyle.yml/badge.svg)](https://github.com/gwleuverink/livewire-property-groups/actions/workflows/codestyle.yml)
+[![tests](https://github.com/gwleuverink/livewire-property-groups/actions/workflows/tests.yml/badge.svg)](https://github.com/gwleuverink/livewire-property-groups/actions/workflows/tests.yml)
 
 This package simplifies property management, validation, and manipulation in Livewire components by allowing you to organize related properties into named groups.
 
 ## Installation
 
 ```bash
-composer require leuverink/livewire-property-group
+composer require leuverink/livewire-property-groups
 ```
 
 ## Basic Usage
