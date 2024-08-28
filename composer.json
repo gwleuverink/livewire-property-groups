@@ -33,13 +33,6 @@
         "orchestra/testbench": "^9",
         "pestphp/pest": "^2.35"
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Leuverink\\PropertyAttribute\\ServiceProvider"
-            ]
-        }
-    },
     "scripts": {
         "lint": "vendor/bin/duster lint",
         "fix": "vendor/bin/duster fix",
