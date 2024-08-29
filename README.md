@@ -75,6 +75,9 @@ $this->group('a')->pull();
 
 // Validate all properties in a group
 $this->group('a')->validate();
+
+// Works inside a form object
+$this->userForm->group('a')->validate();
 ```
 
 ### Working with Multiple Groups
