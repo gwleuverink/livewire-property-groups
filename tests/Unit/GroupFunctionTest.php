@@ -14,9 +14,7 @@ it('returns PropertyCollection', function () {
     };
 
     expect(group($component, 'a'))
-        ->toBeInstanceOf(PropertyCollection::class)
-        ->toHaveKey('foo')
-        ->toContain(1);
+        ->toBeInstanceOf(PropertyCollection::class);
 });
 
 it('ensures PropertyCollection is Iterable & ArrayAccessable', function () {
@@ -30,6 +28,7 @@ it('ensures PropertyCollection is Iterable & ArrayAccessable', function () {
         ->toBeIterable()
         ->toHaveKey('foo')
         ->toContain(1);
+
 });
 
 it('can access property collection like a object', function () {
