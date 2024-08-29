@@ -8,12 +8,9 @@ use ArrayIterator;
 use Livewire\Form;
 use IteratorAggregate;
 use Livewire\Component;
-use Illuminate\Support\Traits\Dumpable;
 
 class PropertyCollection implements ArrayAccess, IteratorAggregate
 {
-    use Dumpable;
-
     final public function __construct(
         private readonly Component|Form $component,
         private array $items = []
