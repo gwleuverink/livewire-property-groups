@@ -58,10 +58,9 @@ $this->group('a')->each(fn() => /* */);
 // Get all grouped properties, excluding non grouped
 $this->group();
 
-// Access group as an array or an object
-$groupA = $this->group('a');
-$groupA['foo'];
-$groupA->foo;
+// Access a group as an array or an object
+$this->group('a')['foo'];
+$this->group('a')->foo;
 ```
 
 ### Proxying Livewire Methods
