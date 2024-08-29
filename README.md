@@ -105,7 +105,7 @@ $validated = $this->group('a')
 ### Conflicting `group` method signature
 
 I realize that `group` is a very generic method name that you might well use inside your own components.
-You may change the macro's signature by providing an alias.
+You may change the method signature by providing an alias.
 
 ```php
 use WithGroups {
