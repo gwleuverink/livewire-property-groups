@@ -17,6 +17,7 @@ composer require leuverink/livewire-property-groups
 use Leuverink\PropertyAttribute\Group;
 use Leuverink\PropertyAttribute\WithGroups;
 
+
 class Form extends Component
 {
     use WithGroups;
@@ -32,10 +33,13 @@ class Form extends Component
 
     public function submit()
     {
-        $groupA = $this->group('a'); // ['foo' => 1, 'bar' => 2]
-        $groupB = $this->group('b'); // ['baz' => 3]
+        $this->group('a')->validate();
+
+        //...
     }
 }
+
+
 ```
 
 ### Accessing Group Properties
@@ -43,6 +47,7 @@ class Form extends Component
 Use the `WithGroups` trait within your Component or Form object to get access to the `group` method.
 
 ```php
+
 // Get all properties in a group
 $this->group('a'); // ['foo' => 1, 'bar' => 2]
 
@@ -61,11 +66,13 @@ $this->group();
 // Access a group as an array or an object
 $this->group('a')['foo'];
 $this->group('a')->foo;
+
 ```
 
 ### Proxying Livewire Methods
 
 ```php
+
 // Reset properties to initial state
 $this->group('a')->reset();
 
@@ -77,21 +84,25 @@ $this->group('a')->validate();
 
 // Works inside a form object
 $this->userForm->group('a')->validate();
+
 ```
 
 ### Working with Multiple Groups
 
 ```php
+
 // Retrieve properties from multiple groups
 $this->group(['a', 'b']);
 
 // Validate multiple groups
 $this->group(['a', 'b'])->validate();
+
 ```
 
 ### Debugging
 
 ```php
+
 // dump group properties
 $this->group('a')->dump();
 
@@ -102,6 +113,7 @@ $this->group('a')->dd();
 $validated = $this->group('a')
     ->dump()
     ->validate();
+
 ```
 
 ### Conflicting `group` method signature
