@@ -39,7 +39,17 @@ it('can access property collection like a object', function () {
     };
 
     expect(group($component, 'a'))
-        ->foo->toBe(1)
+        ->foo->toBe(1);
+});
+
+it('returns null when a property not found', function () {
+    $component = new class extends TestComponent
+    {
+        #[Group('a')]
+        public $foo = 1;
+    };
+
+    expect(group($component, 'a'))
         ->bar->toBe(null);
 });
 
