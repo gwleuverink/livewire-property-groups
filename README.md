@@ -116,9 +116,13 @@ $validated = $this->group('a')
 
 ```
 
-### Usage in Livewire Volt
+### Volt
+
+In class-based components, property groups work like any other Livewite component.
+When using Volt's functional API may use property groups like illustrated below.
 
 ```php
+
 use Leuverink\PropertyAttribute\Group;
 use Leuverink\PropertyAttribute\WithGroups;
 use function Livewire\Volt\{action, state, uses};
@@ -132,14 +136,21 @@ state([
 
 state([
     'bar' => 2,
+    'baz' => 'Lorem',
 ])->attribute(Group::class, 'b');
 
 $action = action(function() {
-    $groupA = $this->group('a');
-    $groupB = $this->group('b');
+    $groupA = $this->group('a')
+        ->validate()
+        ->values();
+
+    $groupB = $this->group('b')
+        ->validate()
+        ->values();
 
     // ...
 });
+
 ```
 
 ### Conflicting `group` method signature
