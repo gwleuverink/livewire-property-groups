@@ -116,6 +116,32 @@ $validated = $this->group('a')
 
 ```
 
+### Usage in Livewire Volt
+
+```php
+use Leuverink\PropertyAttribute\Group;
+use Leuverink\PropertyAttribute\WithGroups;
+use function Livewire\Volt\{action, state, uses};
+
+
+uses([WithGroups::class]);
+
+state([
+    'foo' => 1,
+])->attribute(Group::class, 'a');
+
+state([
+    'bar' => 2,
+])->attribute(Group::class, 'b');
+
+$action = action(function() {
+    $groupA = $this->group('a');
+    $groupB = $this->group('b');
+
+    // ...
+});
+```
+
 ### Conflicting `group` method signature
 
 I realize that `group` is a very generic method name that you might well use inside your own components.
