@@ -118,7 +118,7 @@ $validated = $this->group('a')
 
 ### Volt
 
-In class-based components, property groups work like any other Livewite component.
+In class-based components, property groups work like any other Livewire component.
 When using Volt's functional API you may use property groups like demonstrated below.
 
 ```php
