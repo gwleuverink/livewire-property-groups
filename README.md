@@ -58,7 +58,7 @@ $this->group('a')->keys(); // ['foo', 'bar']
 $this->group('a')->values(); // [1, 2]
 
 // Iterate over properties
-$this->group('a')->each(fn() => /* */);
+$this->group('a')->each(fn($value, $name) => /* */);
 
 // Get all grouped properties, excluding non grouped
 $this->group();
