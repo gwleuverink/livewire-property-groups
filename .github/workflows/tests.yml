@@ -16,9 +16,9 @@ jobs:
       fail-fast: true
       matrix:
         php: [8.3, 8.4]
-        laravel: [^11, ^12]
+        laravel: [^12, ^11]
         livewire: [^3, ^4@beta]
-        stability: [prefer-stable]
+        stability: [prefer-lowest, prefer-stable]
 
     name: LV${{ matrix.livewire }} - L${{ matrix.laravel }} - P${{ matrix.php }} - ${{ matrix.stability }}
 
