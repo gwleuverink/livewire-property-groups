@@ -20,7 +20,7 @@ jobs:
         livewire: [^3, ^4@beta]
         stability: [prefer-lowest, prefer-stable]
 
-    name: ⚡${{ matrix.livewire }} - L${{ matrix.laravel }} - P${{ matrix.php }} - ${{ matrix.stability }}
+    name: LV${{ matrix.livewire }} - L${{ matrix.laravel }} - P${{ matrix.php }} - ${{ matrix.stability }}
 
     steps:
       - name: Checkout repository
@@ -47,7 +47,7 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install Composer dependecies
-        run: /
+        run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "livewire/livewire:${{ matrix.livewire }}" --no-interaction --no-update
           composer update --no-progress --optimize-autoloader --${{ matrix.stability }}
 
