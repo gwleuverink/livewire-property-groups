@@ -30,7 +30,7 @@
         "squizlabs/php_codesniffer": "^3",
         "tightenco/duster": "^3",
         "tightenco/tlint": "^9",
-        "orchestra/testbench": "^9|^10",
+        "orchestra/testbench": "^8|^9|^10",
         "pestphp/pest": "^4.0"
     },
     "scripts": {
