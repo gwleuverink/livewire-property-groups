@@ -15,9 +15,12 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.2, 8.3]
-        laravel: [^10, ^11]
-        dependency-version: [prefer-stable]
+        php: [8.4, 8.3]
+        laravel: [^12, ^11, ^10]
+        livewire: [^3, ^4@beta]
+        stability: [prefer-stable]
+
+    name: LV${{ matrix.livewire }} - L${{ matrix.laravel }} - P${{ matrix.php }} - ${{ matrix.stability }}
 
     steps:
       - name: Checkout repository
@@ -44,7 +47,9 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install Composer dependecies
-        run: composer update --no-progress --optimize-autoloader --${{ matrix.dependency-version }}
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "livewire/livewire:${{ matrix.livewire }}" --no-interaction --no-update
+          composer update --no-progress --optimize-autoloader --${{ matrix.stability }}
 
       - name: Directory Permissions
         run: sudo chown -R $(whoami) vendor/pestphp/pest/.temp vendor/orchestra
