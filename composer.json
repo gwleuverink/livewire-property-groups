@@ -31,7 +31,7 @@
         "tightenco/duster": "^3",
         "tightenco/tlint": "^9",
         "orchestra/testbench": "^8|^9|^10",
-        "pestphp/pest": "^4.0"
+        "pestphp/pest": "^3|^4"
     },
     "scripts": {
         "lint": "vendor/bin/duster lint",
