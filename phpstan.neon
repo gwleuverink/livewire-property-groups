@@ -13,8 +13,7 @@ parameters:
     level: 5
 
 	ignoreErrors:
-		-
-			identifier: trait.unused
+		- identifier: trait.unused
 #        - "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$id\\.$#"
 #
 #
